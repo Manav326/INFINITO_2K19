@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Login Register Apps</string>
+    <string name="my_dashboard">My Dashboard</string>
+    <string name="team_members">Team Members</string>
+    <string name="todo">TODO</string>
+    <string name="socially_connect">Socially Connect</string>
+    <string name="map">Map</string>
+    <string name="todo1">TODO1</string>
+    <string name="share">Share</string>
+    <string name="todo2">TODO2</string>
+    <string name="todo3">TODO3</string>
+    <string name="live_matches">Live Matches</string>
+    <string name="schedules">Schedules</string>
+    <string name="todo4">TODO4</string>
+    <string name="todo5">TODO5</string>
 </resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mind.loginregisterapps">
-
+    package="com.mind.INFINITO">
+<uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,8 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.mind.INFINITO.MainActivity"
             android:theme="@style/AppTheme.FullScreen">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,8 +20,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegisterActivity"
+            android:name="com.mind.INFINITO.RegisterActivity"
             android:theme="@style/AppTheme.FullScreen"></activity>
+        <activity android:name="com.mind.INFINITO.dashboard"></activity>
+        <activity android:name="com.mind.INFINITO.livematches">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.mind.INFINITO.PlayerActivity" android:screenOrientation="nosensor"></activity>
     </application>
 
 </manifest>

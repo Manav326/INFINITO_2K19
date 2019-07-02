@@ -30,20 +30,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:text="@string/my_dashboard"
-                android:textColor="#21CEC0"
-                android:textSize="22sp" />
+                android:textSize="30sp" />
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="85dp"
                 android:layout_height="75dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginEnd="-2dp"
-                android:layout_marginRight="-2dp"
-                android:contentDescription="@string/todo"
-                android:src="@drawable/header_login"
-                app:srcCompat="@drawable/contacts__profile__account__connection" />
+                app:srcCompat="@drawable/contacts__profile__account__connection"
+                android:layout_alignParentEnd="true"
+                android:contentDescription="TODO" />
 
         </RelativeLayout>
 
@@ -66,6 +61,7 @@
                 android:layout_columnWeight="1"
                 android:layout_margin="12dp"
                 app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="@color/colorWhite"
                 app:cardElevation="6dp">
 
                 <LinearLayout
@@ -74,18 +70,18 @@
                     android:layout_gravity="center"
                     android:padding="16dp">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/team"
                         android:layout_width="80dp"
-                        android:layout_height="43dp"
-                        android:contentDescription="@string/todo"
-                        android:src="@drawable/logofacebook"
+                        android:layout_height="80dp"
+                        android:background="@drawable/smartphone__smart__phone__mobile__profile"
+                        android:contentDescription="TODO"
                         app:srcCompat="@drawable/smartphone__smart__phone__mobile__profile" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_marginTop="10dp"
                         android:text="@string/team_members"
                         android:textColor="#6f6f6f"
@@ -99,6 +95,7 @@
                 android:layout_columnWeight="1"
                 android:layout_margin="12dp"
                 app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="@color/colorWhite"
                 app:cardElevation="6dp">
 
                 <LinearLayout
@@ -107,21 +104,19 @@
                     android:layout_gravity="center"
                     android:padding="16dp">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
 
                         android:id="@+id/map"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/logofacebook"
-                        app:srcCompat="@drawable/smartphone__smart__phone__mobile__profile"
-                        android:contentDescription="@string/todo1" />
+                        app:srcCompat="@drawable/smartphone__smart__phone__mobile__profile" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_marginTop="10dp"
-                        android:text="@string/map"
+                        android:text="Map"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -133,6 +128,7 @@
                 android:layout_columnWeight="1"
                 android:layout_margin="12dp"
                 app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="@color/colorWhite"
                 app:cardElevation="6dp">
 
                 <LinearLayout
@@ -141,21 +137,21 @@
                     android:layout_gravity="center"
                     android:padding="16dp">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
 
+                        android:id="@+id/schedule"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/logofacebook"
-                        app:srcCompat="@drawable/smartphone__smart__phone__mobile__profile"
-                        android:contentDescription="@string/todo4" />
+                        android:background="@drawable/smartphone__smart__phone__mobile__profile"
+
+                        app:srcCompat="@drawable/smartphone__smart__phone__mobile__profile" />
 
                     <TextView
-                        android:id="@+id/schedule"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_marginTop="10dp"
-                        android:text="@string/schedules"
+                        android:text="Schedules"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -167,6 +163,7 @@
                 android:layout_columnWeight="1"
                 android:layout_margin="12dp"
                 app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="@color/colorWhite"
                 app:cardElevation="6dp">
 
                 <LinearLayout
@@ -175,21 +172,19 @@
                     android:layout_gravity="center"
                     android:padding="16dp">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
 
                         android:id="@+id/live"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/logofacebook"
-                        app:srcCompat="@drawable/smartphone__smart__phone__mobile__profile"
-                        android:contentDescription="@string/todo5" />
+                        app:srcCompat="@drawable/smartphone__smart__phone__mobile__profile" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_marginTop="10dp"
-                        android:text="@string/live_matches"
+                        android:text="Live Matches"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -201,6 +196,7 @@
                 android:layout_columnWeight="1"
                 android:layout_margin="12dp"
                 app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="@color/colorWhite"
                 app:cardElevation="6dp">
 
                 <LinearLayout
@@ -209,21 +205,20 @@
                     android:layout_gravity="center"
                     android:padding="16dp">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
 
                         android:id="@+id/sconnect"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/logofacebook"
-                        app:srcCompat="@drawable/smartphone__smart__phone__mobile__profile"
-                        android:contentDescription="@string/todo2" />
+
+                        app:srcCompat="@drawable/smartphone__smart__phone__mobile__profile" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_marginTop="10dp"
-                        android:text="@string/socially_connect"
+                        android:text="Socially Connect"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -235,6 +230,7 @@
                 android:layout_columnWeight="1"
                 android:layout_margin="12dp"
                 app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="@color/colorWhite"
                 app:cardElevation="6dp">
 
                 <LinearLayout
@@ -243,21 +239,19 @@
                     android:layout_gravity="center"
                     android:padding="16dp">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
 
                         android:id="@+id/share"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/logofacebook"
-                        app:srcCompat="@drawable/smartphone__smart__phone__mobile__profile"
-                        android:contentDescription="@string/todo3" />
+                        app:srcCompat="@drawable/smartphone__smart__phone__mobile__profile" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_marginTop="10dp"
-                        android:text="@string/share"
+                        android:text="Share"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
                 </LinearLayout>

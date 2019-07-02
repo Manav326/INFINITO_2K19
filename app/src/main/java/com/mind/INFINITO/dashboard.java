@@ -31,7 +31,7 @@ public class dashboard extends AppCompatActivity implements View.OnClickListener
         team.setOnClickListener(this);
         map.setOnClickListener(this);
         sconnect.setOnClickListener(this);
-        sconnect.setOnClickListener(this);
+        schedule.setOnClickListener(this);
         share.setOnClickListener(this);
         /*live.setOnClickListener((View.OnClickListener) this) ;*/
 

@@ -23,6 +23,11 @@
             android:name="com.mind.INFINITO.RegisterActivity"
             android:theme="@style/AppTheme.FullScreen"></activity>
         <activity android:name="com.mind.INFINITO.dashboard"></activity>
+        <activity android:name="com.mind.INFINITO.LocalMap"></activity>
+        <activity android:name="com.mind.INFINITO.Schedule"></activity>
+        <activity android:name="com.mind.INFINITO.SocialConnect"></activity>
+        <activity android:name="com.mind.INFINITO.Share"></activity>
+        <activity android:name="com.mind.INFINITO.TeamMembers"></activity>
         <activity android:name="com.mind.INFINITO.livematches">
 
             <intent-filter>

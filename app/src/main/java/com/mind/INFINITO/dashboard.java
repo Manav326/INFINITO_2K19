@@ -20,11 +20,11 @@ public class dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard);
         live = (AppCompatImageView) findViewById(R.id.live);
-        /*team =  (AppCompatImageView) findViewById(R.id.team);
+        team =  (AppCompatImageView) findViewById(R.id.team);
         map =(AppCompatImageView) findViewById(R.id.map);
         schedule = (AppCompatImageView)findViewById(R.id.schedule);
         sconnect= (AppCompatImageView)findViewById(R.id.sconnect);
-        share = (AppCompatImageView)findViewById(R.id.share);*/
+        share = (AppCompatImageView)findViewById(R.id.share);
         live.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

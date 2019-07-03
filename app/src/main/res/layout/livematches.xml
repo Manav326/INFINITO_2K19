@@ -1,197 +1,311 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
-    android:orientation="vertical"
-    android:padding="3dp"
-    android:paddingLeft="3dp"
-    android:paddingTop="3dp"
-    android:paddingRight="3dp"
-    android:paddingBottom="3dp"
-    >
+    android:background="@mipmap/ic_launcher_foreground"
+    android:padding="1dp"
+    android:paddingLeft="1dp"
+    android:paddingTop="1dp"
+    android:paddingRight="1dp"
+    android:paddingBottom="1dp"
+    tools:context=".livematches">
 
 
-    <LinearLayout
 
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+
+android:orientation="vertical"
+android:padding="3dp"
+android:paddingLeft="3dp"
+android:paddingTop="3dp"
+android:paddingRight="3dp"
+android:paddingBottom="3dp">
+
+    <RelativeLayout
+        style="@style/Base.TextAppearance.AppCompat.Large.Inverse"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/wifi__wireless__internet__location__pointer">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="30dp"
+            android:text="Live Broadcasts"
+            android:gravity="center"
+            android:textSize="40sp"
+            android:textColor="@color/colorPurple" />
+
+
+
+    </RelativeLayout>
+
+
+    <GridLayout
+        android:columnCount="1"
+        android:rowCount="6"
+        android:alignmentMode="alignMargins"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-         >
 
-        <Button
+        android:columnOrderPreserved="false">
 
-            android:id="@+id/athletics"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="12dp"
+        app:cardBackgroundColor="@color/colorWhite"
+        app:cardElevation="6dp">
+
+        <LinearLayout
+
             android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_gravity="center"
-            android:layout_margin="40dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="50dp"
-            android:height="30dp"
-            android:background="#20308B"
-            android:padding="4dp"
-            android:paddingLeft="3dp"
-            android:paddingTop="3dp"
-            android:paddingRight="3dp"
-            android:paddingBottom="3dp"
-            android:text="Live Athletics"
-            android:textColor="#20CA27"
-            android:textStyle="bold"
-            android:visibility="visible" />
-    </LinearLayout>
-    <LinearLayout
+            android:layout_height="match_parent">
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <Button
 
-        <Button
+                android:id="@+id/athletics"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+                android:layout_margin="40dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="50dp"
+                android:height="30dp"
+                android:background="#20308B"
+                android:padding="4dp"
+                android:paddingLeft="3dp"
+                android:paddingTop="3dp"
+                android:paddingRight="3dp"
+                android:paddingBottom="3dp"
+                android:text="Live Athletics"
+                android:textColor="#20CA27"
+                android:textStyle="bold"
+                android:visibility="visible" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="@color/colorWhite"
+            app:cardElevation="6dp">
 
-            android:id="@+id/cricket"
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_gravity="center"
-            android:layout_margin="40dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="50dp"
-            android:height="30dp"
-            android:background="#20308B"
-            android:padding="4dp"
-            android:paddingLeft="3dp"
-            android:paddingTop="3dp"
-            android:paddingRight="3dp"
-            android:paddingBottom="3dp"
-            android:text="Live Cricket"
-            android:textColor="#20CA27"
-            android:textStyle="bold"
-            android:visibility="visible" />
-    </LinearLayout>
+            <LinearLayout
 
-    <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                <Button
 
-        <Button
+                    android:id="@+id/cricket"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="40dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginBottom="50dp"
+                    android:height="30dp"
+                    android:background="#20308B"
+                    android:padding="4dp"
+                    android:paddingLeft="3dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="Live Cricket"
+                    android:textColor="#20CA27"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="@color/colorWhite"
+            app:cardElevation="6dp">
 
-            android:id="@+id/volleyball"
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_gravity="center"
-            android:layout_margin="40dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="50dp"
-            android:height="30dp"
-            android:background="#20308B"
-            android:padding="4dp"
-            android:paddingLeft="3dp"
-            android:paddingTop="3dp"
-            android:paddingRight="3dp"
-            android:paddingBottom="3dp"
-            android:text="Live Volleyball"
-            android:textColor="#20CA27"
-            android:textStyle="bold"
-            android:visibility="visible" />
-    </LinearLayout>
+            <LinearLayout
 
-    <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                <Button
 
-        <Button
+                    android:id="@+id/volleyball"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="40dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginBottom="50dp"
+                    android:height="30dp"
+                    android:background="#20308B"
+                    android:padding="4dp"
+                    android:paddingLeft="3dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="Live Volleyball"
+                    android:textColor="#20CA27"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="@color/colorWhite"
+            app:cardElevation="6dp">
 
-            android:id="@+id/basketball"
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_gravity="center"
-            android:layout_margin="40dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="50dp"
-            android:height="30dp"
-            android:background="#20308B"
-            android:padding="4dp"
-            android:paddingLeft="3dp"
-            android:paddingTop="3dp"
-            android:paddingRight="3dp"
-            android:paddingBottom="3dp"
-            android:text="Live Basketball"
-            android:textColor="#20CA27"
-            android:textStyle="bold"
-            android:visibility="visible" />
-    </LinearLayout>
+            <LinearLayout
 
-    <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                <Button
 
-        <Button
+                    android:id="@+id/basketball"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="40dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginBottom="50dp"
+                    android:height="30dp"
+                    android:background="#20308B"
+                    android:padding="4dp"
+                    android:paddingLeft="3dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="Live Basketball"
+                    android:textColor="#20CA27"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="@color/colorWhite"
+            app:cardElevation="6dp">
 
-            android:id="@+id/tabletennis"
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_gravity="center"
-            android:layout_margin="40dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="50dp"
-            android:height="30dp"
-            android:background="#20308B"
-            android:padding="4dp"
-            android:paddingLeft="3dp"
-            android:paddingTop="3dp"
-            android:paddingRight="3dp"
-            android:paddingBottom="3dp"
-            android:text="Live Table Tennis"
-            android:textColor="#20CA27"
-            android:textStyle="bold"
-            android:visibility="visible" />
-    </LinearLayout>
+            <LinearLayout
 
-    <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                <Button
 
-        <Button
+                    android:id="@+id/tabletennis"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="40dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginBottom="50dp"
+                    android:height="30dp"
+                    android:background="#20308B"
+                    android:padding="4dp"
+                    android:paddingLeft="3dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="Live Table Tennis"
+                    android:textColor="#20CA27"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="@color/colorWhite"
+            app:cardElevation="6dp">
 
-            android:id="@+id/lawntennis"
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_gravity="center"
-            android:layout_margin="40dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="50dp"
-            android:height="30dp"
-            android:background="#20308B"
-            android:padding="4dp"
-            android:paddingLeft="3dp"
-            android:paddingTop="3dp"
-            android:paddingRight="3dp"
-            android:paddingBottom="3dp"
-            android:text="Live Lawn Tennis"
-            android:textColor="#20CA27"
-            android:textStyle="bold"
-            android:visibility="visible" />
-    </LinearLayout>
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+
+                    android:id="@+id/lawntennis"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="40dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginBottom="50dp"
+                    android:height="30dp"
+                    android:background="#20308B"
+                    android:padding="4dp"
+                    android:paddingLeft="3dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="Live Lawn Tennis"
+                    android:textColor="#20CA27"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </GridLayout>
 
 
 
 
-    </LinearLayout>
+
+
+</LinearLayout>
+
+</ScrollView>
 

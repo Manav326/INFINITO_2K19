@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+
 
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/youTubePlayerView"
@@ -14,12 +17,16 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
     </com.google.android.youtube.player.YouTubePlayerView>
-
+    <LinearLayout
+        android:layout_marginTop="460dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
     <Button
         android:id="@+id/fscreen"
         android:layout_width="wrap_content"
@@ -27,16 +34,16 @@
         android:layout_below="@+id/youTubePlayerView"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="161dp"
-        android:layout_marginLeft="161dp"
-        android:layout_marginTop="152dp"
-        android:layout_marginEnd="156dp"
-        android:layout_marginRight="156dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+
+        android:layout_marginTop="45dp"
         android:height="30dp"
+
+
         android:background="#20308B"
-        android:padding="4dp"
+        android:gravity="center_horizontal"
+        android:padding="6dp"
         android:paddingLeft="3dp"
         android:paddingTop="3dp"
         android:paddingRight="3dp"
@@ -45,5 +52,6 @@
         android:textColor="#20CA27"
         android:textStyle="bold"
         android:visibility="visible" />
+    </LinearLayout>
 
 </RelativeLayout>

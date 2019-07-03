@@ -80,6 +80,7 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:id="@+id/uEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -96,6 +97,7 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:id="@+id/uUserName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -112,6 +114,7 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:id="@+id/uPasswd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -128,6 +131,7 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:id="@+id/uRePasswd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"

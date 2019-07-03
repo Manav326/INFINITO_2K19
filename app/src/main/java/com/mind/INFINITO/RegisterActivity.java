@@ -1,21 +1,39 @@
 package com.mind.INFINITO;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
+
+import android.util.Log;
+import android.util.Patterns;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private RelativeLayout rlayout;
     private Animation animation;
     private Button signup;
+    EditText uEmail, uUserName, uPasswd, uRePasswd;
+    ProgressDialog progressDialog;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +45,92 @@ public class RegisterActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         signup =(Button) findViewById(R.id.signup);
         rlayout = findViewById(R.id.rlayout);
+        mAuth = FirebaseAuth.getInstance();
+
+        uEmail = findViewById(R.id.uEmail);
+        uUserName = findViewById(R.id.uUserName);
+        uPasswd = findViewById(R.id.uPasswd);
+        uRePasswd = findViewById(R.id.uRePasswd);
+
+
         animation = AnimationUtils.loadAnimation(this,R.anim.uptodowndiagonal);
         rlayout.setAnimation(animation);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Registering User....");
+
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), dashboard.class);
-                startActivity(intent);
+
+
+                 String Email = uEmail.getText().toString().trim();
+                String User = uUserName.getText().toString().trim();
+                String Password = uPasswd.getText().toString().trim();
+                String RePassword = uRePasswd.getText().toString().trim();
+
+                if(!Patterns.EMAIL_ADDRESS.matcher(Email).matches()){
+                    uEmail.setError("Enter Valid Email Adress");
+                    uEmail.setFocusable(true);
+                    }
+                else if ((Password.length()<6) || (RePassword.length()<6)){
+
+                    uPasswd.setError("Password Length atleast 6");
+                    uPasswd.setFocusable(true);
+                }
+
+               /* else if (!(Password==RePassword)){
+
+                    uRePasswd.setError("Password Didn't Match");
+                    uRePasswd.setFocusable(true);
+                }*/
+                else{
+
+                    registerUser(Email,Password);
+                }
+
+               /* Intent intent = new Intent(getApplicationContext(), dashboard.class);
+                startActivity(intent);*/
             }
         });
+    }
+
+    private void registerUser(String email, String password) {
+        progressDialog.show();
+
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            progressDialog.dismiss();
+                            // Sign in success, update UI with the signed-in user's information
+                           // Log.d(TAG, "createUserWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(RegisterActivity.this,"Registered.."+user.getEmail(),Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), dashboard.class);
+                            startActivity(intent);
+
+                            //updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            progressDialog.dismiss();
+                            //Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(RegisterActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                            //updateUI(null);
+                        }
+
+                        // ...
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                progressDialog.dismiss();
+                Toast.makeText(RegisterActivity.this, ""+e.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
    /* @Override

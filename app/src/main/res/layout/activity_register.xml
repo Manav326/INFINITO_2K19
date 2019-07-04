@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
-
+    tools:context=".RegisterActivity"
+    android:background="@color/ic_launcher_background">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/bgHeader"
         android:layout_width="match_parent"
         android:layout_height="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="0dp"
         android:background="@drawable/header_register"
+        android:elevation="5dp"
         android:theme="@style/ToolbarTheme"
-        android:elevation="5dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="1dp" />
 
     <TextView
         android:id="@+id/tvSignUp"
@@ -155,6 +162,8 @@
                     android:id="@+id/signup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="0dp"
                     android:background="@drawable/bg_ui"
                     android:text="Sign up"
                     android:textAllCaps="false"
@@ -162,5 +171,18 @@
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
+
+    <!-- <android.support.v7.widget.Toolbar
+         android:id="@+id/bgHeader"
+         android:layout_width="match_parent"
+         android:layout_height="120dp"
+         android:layout_alignParentStart="true"
+         android:layout_alignParentTop="true"
+         android:layout_marginStart="4dp"
+         android:layout_marginTop="-153dp"
+         android:background="@drawable/header_register"
+         android:elevation="5dp"
+         android:theme="@style/ToolbarTheme"
+         android:layout_alignParentLeft="true" />-->
 
 </RelativeLayout>

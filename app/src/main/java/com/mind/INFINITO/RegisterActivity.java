@@ -79,11 +79,11 @@ public class RegisterActivity extends AppCompatActivity {
                     uPasswd.setFocusable(true);
                 }
 
-               /* else if (!(Password==RePassword)){
+               else if (!(Password.equals(RePassword))){
 
                     uRePasswd.setError("Password Didn't Match");
                     uRePasswd.setFocusable(true);
-                }*/
+                }
                 else{
 
                     registerUser(Email,Password);

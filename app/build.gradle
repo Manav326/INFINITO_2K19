@@ -9,6 +9,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -39,5 +40,6 @@ dependencies {
 
     //library
     implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 }

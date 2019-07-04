@@ -1,7 +1,9 @@
 package com.mind.INFINITO;
 
 import android.app.ActivityOptions;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -10,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.util.Pair;
 import android.util.Patterns;
@@ -17,6 +20,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +43,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private ImageButton btRegister;
     private TextView tvLogin;
+    private TextView tvForgot;
     private Button logIn;
     private EditText uName1, uPasswd1;
     private static final int RC_SIGN_IN = 100;
@@ -54,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         btRegister  = findViewById(R.id.btRegister);
         tvLogin     = findViewById(R.id.tvLogin);
+        tvForgot= findViewById(R.id.tvForgot);
         logIn =findViewById(R.id.logIn);
         uName1 =findViewById(R.id.uName1);
         uPasswd1 =findViewById(R.id.uPasswd1);
@@ -70,7 +76,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Logging User In....");
         progressDialog2 = new ProgressDialog(this);
-        progressDialog2.setMessage("Logging In With Google....");
+        progressDialog2.setMessage("Sending Recovery Email....");
+        tvForgot.setOnClickListener(this);
         btRegister.setOnClickListener(this);
         logIn.setOnClickListener(this);
         mGoogleLogIn.setOnClickListener(this);
@@ -82,11 +89,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId())
         {
             case R.id.btRegister:
-                Intent intent   = new Intent(MainActivity.this,RegisterActivity.class);
-                Pair[] pairs    = new Pair[1];
-                pairs[0] = new Pair<View,String>(tvLogin,"tvLogin");
-                ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,pairs);
-                startActivity(intent,activityOptions.toBundle());
+
+                    Intent intent   = new Intent(MainActivity.this,RegisterActivity.class);
+                    Pair[] pairs    = new Pair[1];
+                    pairs[0] = new Pair<View,String>(tvLogin,"tvLogin");
+                    ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,pairs);
+                    startActivity(intent,activityOptions.toBundle());
                 break;
 
             case R.id.logIn:
@@ -114,9 +122,67 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.GoogleBt:
                  signIn();
                  break;
+
+            case R.id.tvForgot:
+
+                showRecoverPasswdDialog();
+                break;
         }
     }
 
+    private void showRecoverPasswdDialog() {
+        AlertDialog.Builder builder= new AlertDialog.Builder(this);
+        builder.setTitle("Recover Your Password");
+
+        LinearLayout linearlayout = new LinearLayout(this);
+        final EditText emailEt = new EditText(this);
+        emailEt.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        emailEt.setMinEms(16);
+        emailEt.setHint("Email");
+        linearlayout.addView(emailEt);
+        linearlayout.setPadding(10,10,10,10);
+        builder.setView(linearlayout);
+
+        builder.setPositiveButton("Recover", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String emailRe = emailEt.getText().toString().trim();
+                beginRecovery(emailRe);
+
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+             dialog.dismiss();
+            }
+        });
+
+         builder.create().show();
+
+    }
+
+    private void beginRecovery(String emailRe) {
+        progressDialog2.show();
+        mAuth.sendPasswordResetEmail(emailRe).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                progressDialog2.dismiss();
+                if (task.isSuccessful()){
+                    Toast.makeText(MainActivity.this, "Email Sent....", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(MainActivity.this, "Email Sending failed.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                progressDialog2.dismiss();
+                Toast.makeText(MainActivity.this, "Authentication failed." + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 
     private void loginUser(String email, String password) {

@@ -51,7 +51,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="scalingPercent" value="57" />
+                                                <entry key="scalingPercent" value="80" />
+                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -63,8 +64,10 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="90a674" />
+                                      <entry key="backgroundLayerName" value="ic_LogoBackGround" />
                                       <entry key="foregroundImage" value="B:\importants\Logo_infinito.png" />
-                                      <entry key="webIconShape" value="CIRCLE" />
+                                      <entry key="foregroundLayerName" value="ic_LogoInfinito" />
+                                      <entry key="outputName" value="logo_infinito" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -120,6 +123,11 @@
                 </map>
               </option>
             </PersistentState>
+          </value>
+        </entry>
+        <entry key="vectorWizard">
+          <value>
+            <PersistentState />
           </value>
         </entry>
       </map>

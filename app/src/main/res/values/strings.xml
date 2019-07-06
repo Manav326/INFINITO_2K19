@@ -13,4 +13,6 @@
     <string name="schedules">Schedules</string>
     <string name="todo4">TODO4</string>
     <string name="todo5">TODO5</string>
+    <string name="default_notification_channel_ID">INFINITO NotiServices</string>
+
 </resources>

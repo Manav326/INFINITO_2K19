@@ -5,12 +5,15 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.multidex.MultiDex;
+
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -38,6 +41,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -51,10 +58,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     GoogleSignInClient mGoogleSignInClient;
     ProgressDialog progressDialog,progressDialog2;
     private FirebaseAuth mAuth;
+    SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        MultiDex.install(this);
+        sp = getSharedPreferences("initialLogIn", MODE_PRIVATE);
+        if(sp.getBoolean("initialLogIn",false)){
+
+            Intent intent = new Intent(this, dashboard.class);
+
+        }
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btRegister  = findViewById(R.id.btRegister);
@@ -64,6 +81,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         uName1 =findViewById(R.id.uName1);
         uPasswd1 =findViewById(R.id.uPasswd1);
         mGoogleLogIn =  findViewById(R.id.GoogleBt);
+
+
+
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -147,7 +167,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String emailRe = emailEt.getText().toString().trim();
+                if(emailRe.length() != 0 ){
                 beginRecovery(emailRe);
+                }else
+                    {
+                    Toast.makeText(MainActivity.this, "Provide Valid Email..." , Toast.LENGTH_SHORT).show();
+
+                }
 
             }
         });
@@ -196,7 +222,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         {
 
                             progressDialog.dismiss();
+                            sp.edit().putBoolean("initialLogIn",true).apply();
                             FirebaseUser user = mAuth.getCurrentUser();
+
+                            //FirebaseUser user = mAuth.getCurrentUser();
+                            String email =user.getEmail();
+                            String uid = user.getUid();
+
+                            HashMap<Object, String> hashMap = new HashMap<>();
+                            hashMap.put("email",email);
+                            hashMap.put("uid",uid);
+                            hashMap.put("name","");
+                            hashMap.put("phone","");
+                            hashMap.put("fav","");
+                            hashMap.put("image","");
+
+                            FirebaseDatabase database =FirebaseDatabase.getInstance();
+                            DatabaseReference reference = database.getReference("users");
+                            reference.child(uid).setValue(hashMap);
+
+
+
                             Toast.makeText(MainActivity.this, "Registered.." + user.getEmail(), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), dashboard.class);
                             startActivity(intent);
@@ -239,7 +285,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-        Toast.makeText(MainActivity.this, "Authentic With Google" , Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, "Authenticating With Google" , Toast.LENGTH_SHORT).show();
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
@@ -247,9 +293,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            sp.edit().putBoolean("initialLogIn",true).apply();
+                                   FirebaseUser user = mAuth.getCurrentUser();
+
                             updateUI(user);
                         } else {
+
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            String email =user.getEmail();
+                            String uid = user.getUid();
+
+                            HashMap<Object, String> hashMap = new HashMap<>();
+                            hashMap.put("email",email);
+                            hashMap.put("uid",uid);
+                            hashMap.put("name","");
+                            hashMap.put("phone","");
+                            hashMap.put("fav","");
+                            hashMap.put("image","");
+
+                            FirebaseDatabase database =FirebaseDatabase.getInstance();
+                            DatabaseReference reference = database.getReference("Users");
+                            reference.child(uid).setValue(hashMap);
+
                             Toast.makeText(MainActivity.this, "Authentication failed!" +task.getException(), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);

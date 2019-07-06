@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/ic_launcher_foreground"
+    android:background="@mipmap/ic_launcher"
     android:padding="1dp"
     android:paddingLeft="1dp"
     android:paddingTop="1dp"
@@ -27,15 +27,37 @@
             android:layout_marginRight="20dp">
 
             <TextView
+                android:id="@+id/myName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:text="@string/my_dashboard"
+                android:text="My Name"
                 android:textSize="30sp" />
 
+            <TextView
+                android:id="@+id/myEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/myName"
+                android:layout_marginTop="10dp"
+
+                android:text="Email"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/myFav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/myEmail"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="3dp"
+                android:text="Fav Game"
+                android:textSize="25sp" />
+
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="85dp"
-                android:layout_height="75dp"
+                android:id="@+id/myProfilePic"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:contentDescription="TODO"

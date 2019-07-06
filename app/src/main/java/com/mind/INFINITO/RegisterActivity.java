@@ -5,8 +5,11 @@ import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
+import androidx.multidex.MultiDex;
 
 import android.util.Log;
 import android.util.Patterns;
@@ -25,18 +28,24 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private RelativeLayout rlayout;
     private Animation animation;
     private Button signup;
-    EditText uEmail, uUserName, uPasswd, uRePasswd;
+    private  EditText uEmail, uUserName, uPasswd, uRePasswd;
     ProgressDialog progressDialog;
     private FirebaseAuth mAuth;
+    SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        MultiDex.install(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         Toolbar toolbar = findViewById(R.id.bgHeader);
@@ -46,6 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
         signup =(Button) findViewById(R.id.signup);
         rlayout = findViewById(R.id.rlayout);
         mAuth = FirebaseAuth.getInstance();
+        sp = getSharedPreferences("initialLogIn", MODE_PRIVATE);
 
         uEmail = findViewById(R.id.uEmail);
         uUserName = findViewById(R.id.uUserName);
@@ -103,10 +113,27 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            sp.edit().putBoolean("initialLogIn",true).apply();
                             progressDialog.dismiss();
                             // Sign in success, update UI with the signed-in user's information
                            // Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            String email =user.getEmail();
+                            String uid = user.getUid();
+
+                            HashMap<Object, String> hashMap = new HashMap<>();
+                            hashMap.put("email",email);
+                            hashMap.put("uid",uid);
+                            hashMap.put("name","");
+                            hashMap.put("phone","");
+                            hashMap.put("fav","");
+                            hashMap.put("image","");
+
+                            FirebaseDatabase database =FirebaseDatabase.getInstance();
+
+                            DatabaseReference reference = database.getReference("users");
+                            reference.child(uid).setValue(hashMap);
+
                             Toast.makeText(RegisterActivity.this,"Registered.."+user.getEmail(),Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), dashboard.class);
                             startActivity(intent);

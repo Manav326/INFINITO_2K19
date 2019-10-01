@@ -1,16 +1,8 @@
 package com.mind.INFINITO;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.AttributeSet;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
-import androidx.fragment.app.Fragment;
 import androidx.multidex.MultiDex;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,7 +23,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.squareup.picasso.Picasso;
 
 public class dashboard extends AppCompatActivity implements View.OnClickListener {
     private AppCompatImageView team, map, schedule, live, sconnect, share, myProfilePic;
@@ -97,7 +87,7 @@ public class dashboard extends AppCompatActivity implements View.OnClickListener
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                  //DataSnapshot ds = dataSnapshot.getChildren();
                for (DataSnapshot ds : dataSnapshot.getChildren()){
-                   String name = "" + ds.child("uid").getValue() ;
+                   String name = "" + ds.child("name").getValue() ;
                    String email = "" + ds.child("email").getValue() ;
                    String fav = "" + ds.child("fav").getValue() ;
                    String image = "" + ds.child("image").getValue() ;
@@ -160,8 +150,19 @@ public class dashboard extends AppCompatActivity implements View.OnClickListener
                 break;
 
             case R.id.share:
-                Intent intent5 = new Intent(getApplicationContext(), Share.class);
-                startActivity(intent5);
+                //Intent intent5 = new Intent(getApplicationContext(), Share.class);
+                //startActivity(intent5);
+                Intent intent5 = new Intent(Intent.ACTION_SEND);
+                intent5.setType("text/plain");
+                String shareBody = "Your Message Body Here";
+                String shareSubject = "Your Message Subject Here";
+
+                intent5.putExtra(Intent.EXTRA_TEXT,shareBody);
+                intent5.putExtra(Intent.EXTRA_SUBJECT,shareSubject);
+
+                startActivity(Intent.createChooser(intent5, "Share Using"));
+
+
                 break;
 
 

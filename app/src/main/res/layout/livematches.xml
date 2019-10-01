@@ -56,7 +56,7 @@ android:paddingBottom="3dp">
 
     <GridLayout
         android:columnCount="1"
-        android:rowCount="6"
+        android:rowCount="7"
         android:alignmentMode="alignMargins"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -292,6 +292,45 @@ android:paddingBottom="3dp">
                     android:paddingRight="3dp"
                     android:paddingBottom="3dp"
                     android:text="Live Lawn Tennis"
+                    android:textColor="#20CA27"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="@color/colorWhite"
+            app:cardElevation="6dp">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+
+                    android:id="@+id/football"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="40dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginBottom="50dp"
+                    android:height="30dp"
+                    android:background="#20308B"
+                    android:padding="4dp"
+                    android:paddingLeft="3dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="Live FootBall"
                     android:textColor="#20CA27"
                     android:textStyle="bold"
                     android:visibility="visible" />

@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mind.INFINITO">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="com.mind.INFINITO.permission.MAPS_RECEIVE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -13,11 +20,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
         <service android:name=".MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.FullScreen">
@@ -27,9 +40,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-
         <activity
             android:name=".RegisterActivity"
             android:theme="@style/AppTheme.FullScreen" />
@@ -37,17 +47,38 @@
         <activity android:name=".LocalMap" />
         <activity android:name=".Schedule" />
         <activity android:name=".SocialConnect" />
-        <activity android:name=".Share" />
         <activity android:name=".TeamMembers" />
-        <activity android:name=".livematches">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".scorelive.livescore" />
+        <activity android:name=".scorelive.athletics" />
+        <activity android:name=".scorelive.basketball" />
+        <activity android:name=".scorelive.cricket" />
+        <activity android:name=".scorelive.football" />
+        <activity android:name=".scorelive.tabletennis" />
+        <activity android:name=".scorelive.lawntennis" />
+        <activity android:name=".scorelive.volleyball" />
+        <activity android:name=".livematches" />
+        <activity android:name=".InterfaceMap" />
+        <activity android:name=".map.staticMap" />
         <activity
-            android:name=".PlayerActivity"
+            android:name=".playerLive.AthletcsLive"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".playerLive.VolleyballLive"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".playerLive.BasketballLive"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".playerLive.CricketLive"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".playerLive.TabletennisLive"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".playerLive.LawntennisLive"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".playerLive.FootballLive"
             android:screenOrientation="nosensor" />
     </application>
 

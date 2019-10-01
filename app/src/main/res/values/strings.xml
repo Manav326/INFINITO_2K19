@@ -14,5 +14,8 @@
     <string name="todo4">TODO4</string>
     <string name="todo5">TODO5</string>
     <string name="default_notification_channel_ID">INFINITO NotiServices</string>
+    <string name="title_activity_all_user">AllUser</string>
+    <string name="google_maps_key">AIzaSyBibqViUKZArZvpRrLEgi_i4eCrG6YD73M</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

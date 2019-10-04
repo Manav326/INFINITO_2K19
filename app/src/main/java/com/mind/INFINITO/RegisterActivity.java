@@ -2,16 +2,8 @@ package com.mind.INFINITO;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
-import androidx.multidex.MultiDex;
-
-import android.util.Log;
 import android.util.Patterns;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +13,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.multidex.MultiDex;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -38,10 +35,11 @@ public class RegisterActivity extends AppCompatActivity {
     private RelativeLayout rlayout;
     private Animation animation;
     private Button signup;
-    private  EditText uEmail, uUserName, uPasswd, uRePasswd;
+    private  EditText uEmail, uUserName, uPasswd, fvGame,phonNo;
     ProgressDialog progressDialog;
     private FirebaseAuth mAuth;
     SharedPreferences sp;
+    String User,favGame,phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +54,11 @@ public class RegisterActivity extends AppCompatActivity {
         rlayout = findViewById(R.id.rlayout);
         mAuth = FirebaseAuth.getInstance();
         sp = getSharedPreferences("initialLogIn", MODE_PRIVATE);
-
+         phonNo=findViewById(R.id.phonNo);
         uEmail = findViewById(R.id.uEmail);
         uUserName = findViewById(R.id.uUserName);
         uPasswd = findViewById(R.id.uPasswd);
-        uRePasswd = findViewById(R.id.uRePasswd);
+        fvGame = findViewById(R.id.fvGame);
 
 
         animation = AnimationUtils.loadAnimation(this,R.anim.uptodowndiagonal);
@@ -72,35 +70,31 @@ public class RegisterActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+                  phone=phonNo.getText().toString().trim();
                  String Email = uEmail.getText().toString().trim();
-                String User = uUserName.getText().toString().trim();
+                 User = uUserName.getText().toString().trim();
                 String Password = uPasswd.getText().toString().trim();
-                String RePassword = uRePasswd.getText().toString().trim();
+                 favGame = fvGame.getText().toString().trim();
 
                 if(!Patterns.EMAIL_ADDRESS.matcher(Email).matches()){
                     uEmail.setError("Enter Valid Email Adress");
                     uEmail.setFocusable(true);
                     }
-                else if ((Password.length()<6) || (RePassword.length()<6)){
+               else if (Password.length()<6){
 
                     uPasswd.setError("Password Length atleast 6");
                     uPasswd.setFocusable(true);
                 }
 
-               else if (!(Password.equals(RePassword))){
+              else if ((phonNo.length()<10) || (phonNo.length()>10)){
 
-                    uRePasswd.setError("Password Didn't Match");
-                    uRePasswd.setFocusable(true);
+                    phonNo.setError("Enter Valid Phone Number");
+                    phonNo.setFocusable(true);
                 }
                 else{
 
                     registerUser(Email,Password);
                 }
-
-               /* Intent intent = new Intent(getApplicationContext(), dashboard.class);
-                startActivity(intent);*/
             }
         });
     }
@@ -113,42 +107,32 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            sp.edit().putBoolean("initialLogIn",true).apply();
+                           sp.edit().putBoolean("initialLogIn",true).apply();
                             progressDialog.dismiss();
-                            // Sign in success, update UI with the signed-in user's information
-                           // Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             String email =user.getEmail();
                             String uid = user.getUid();
-
+                            String phonef="+91-".concat(phone);
                             HashMap<Object, String> hashMap = new HashMap<>();
                             hashMap.put("email",email);
                             hashMap.put("uid",uid);
-                            hashMap.put("name","");
-                            hashMap.put("phone","");
-                            hashMap.put("fav","");
+                            hashMap.put("name",User);
+                            hashMap.put("phone",phonef);
+                            hashMap.put("fav",favGame);
                             hashMap.put("image","");
-
                             FirebaseDatabase database =FirebaseDatabase.getInstance();
-
                             DatabaseReference reference = database.getReference("users");
                             reference.child(uid).setValue(hashMap);
-
                             Toast.makeText(RegisterActivity.this,"Registered.."+user.getEmail(),Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), dashboard.class);
                             startActivity(intent);
-
-                            //updateUI(user);
+                            finish();
                         } else {
-                            // If sign in fails, display a message to the user.
                             progressDialog.dismiss();
-                            //Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(RegisterActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
                         }
 
-                        // ...
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -159,18 +143,6 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
     }
-
-   /* @Override
-    public void onClick(View v) {
-        if (v==signup){
-            Intent intent   = new Intent(RegisterActivity.this,RegisterActivity.class);
-            Pair[] pairs    = new Pair[1];
-            pairs[0] = new Pair<View,String>(signup,"signup");
-            ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(RegisterActivity.this,pairs);
-            startActivity(intent,activityOptions.toBundle());
-        }
-
-    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

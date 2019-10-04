@@ -1,2 +1,2 @@
 # INFINITO
-Android
+AndroidApp

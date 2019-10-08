@@ -17,9 +17,11 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/cover_infinito_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+       >
+        <activity android:name=".FbWebView"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -46,7 +48,6 @@
         <activity android:name=".dashboard" />
         <activity android:name=".LocalMap" />
         <activity android:name=".Schedule" />
-        <activity android:name=".SocialConnect" />
         <activity android:name=".TeamMembers" />
         <activity android:name=".scorelive.livescore" />
         <activity android:name=".scorelive.athletics" />
@@ -59,6 +60,10 @@
         <activity android:name=".livematches" />
         <activity android:name=".InterfaceMap" />
         <activity android:name=".map.staticMap" />
+        <activity android:name=".instaTabbed" />
+        <activity android:name=".ui.main.Fragment_Insta" />
+        <activity android:name=".ui.main.Fragment_Fb" />
+        <activity android:name=".ui.main.Fragment_Site" />
         <activity
             android:name=".playerLive.AthletcsLive"
             android:screenOrientation="nosensor" />

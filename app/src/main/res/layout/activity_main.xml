@@ -7,7 +7,7 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".MainActivity"
 tools:ignore="VectorDrawableCompat"
-    android:background="@color/ic_launcher_background"
+    android:background="@drawable/back"
     >
 
     <androidx.appcompat.widget.Toolbar
@@ -21,7 +21,7 @@ tools:ignore="VectorDrawableCompat"
         android:elevation="5dp"
         app:subtitleTextAppearance="@style/TextAppearance.AppCompat.Display4" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.blogspot.atifsoftwares.circularimageview.CircularImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_alignParentStart="true"
@@ -29,13 +29,14 @@ tools:ignore="VectorDrawableCompat"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="167dp"
-        android:layout_marginLeft="167dp"
-        android:layout_marginTop="112dp"
-        android:layout_marginEnd="144dp"
-        android:layout_marginRight="144dp"
-        android:background="@mipmap/logo_infinito"
-        android:foregroundGravity="center_horizontal" />
+        android:layout_marginStart="156dp"
+        android:layout_marginLeft="156dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="154dp"
+        android:layout_marginRight="154dp"
+        android:foregroundGravity="center_horizontal"
+        app:srcCompat="@drawable/infinito_cover1" />
+    android:background="@mipmap/ic_launcher"
 
 <TextView
     android:id="@+id/tvDesc"
@@ -43,21 +44,22 @@ tools:ignore="VectorDrawableCompat"
     android:layout_height="wrap_content"
     android:layout_marginLeft="30dp"
     android:layout_marginTop="40dp"
-    android:elevation="5dp"
+    android:elevation="10sp"
     android:text="Welcome to INFINITO"
     android:textColor="@color/colorWhite"
-    android:textSize="17sp" />
+    android:textSize="30sp" />
 
     <TextView
         android:id="@+id/tvLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
         android:layout_below="@+id/tvDesc"
         android:layout_alignLeft="@+id/tvDesc"
         android:elevation="5dp"
         android:text="Feel The Burn"
         android:textColor="@color/colorAccent"
-        android:textSize="30sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:transitionName="tvLogin" />
 
@@ -116,13 +118,16 @@ tools:ignore="VectorDrawableCompat"
             android:layout_height="match_parent"
             android:layout_margin="20dp"
             app:cardCornerRadius="10dp"
-            app:cardElevation="4dp">
+            app:cardElevation="4dp"
+            android:background="@color/colorWhite"
+           >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingBottom="50dp">
+                android:paddingBottom="50dp"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -217,12 +222,30 @@ tools:ignore="VectorDrawableCompat"
             android:text="Forgot your password?"
             android:textColor="@color/colorAccent"
             android:textSize="14sp" />
+        <TextView
+            android:id="@+id/register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvForgot"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+
+            android:elevation="5dp"
+            android:padding="2dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="2dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="1dp"
+            android:background="@drawable/bt_uifb"
+            android:text="Don't have account? "
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp" />
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/GoogleBt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvForgot"
+            android:layout_below="@+id/register"
             android:layout_alignLeft="@+id/cv"
             android:layout_alignRight="@+id/cv"
             android:layout_marginLeft="20dp"

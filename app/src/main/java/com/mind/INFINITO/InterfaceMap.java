@@ -56,49 +56,37 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
-
 public class InterfaceMap extends AppCompatActivity implements OnMapReadyCallback     {
-
-
 
     private GoogleMap mMap;
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private PlacesClient placesClient;
     private List<AutocompletePrediction> predictionList;
-
     private Location mLastKnownLocation;
     private LocationCallback locationCallback;
-
     private MaterialSearchBar materialSearchBar;
     private View mapView;
     private Button btnFind;
     private RippleBackground rippleBg;
-
     private final float DEFAULT_ZOOM = 15;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.interfacemap);
-
         materialSearchBar = findViewById(R.id.searchBar);
         btnFind = findViewById(R.id.btn_find);
         rippleBg = findViewById(R.id.ripple_bg);
-
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         mapView = mapFragment.getView();
-
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(InterfaceMap.this);
         Places.initialize(InterfaceMap.this, getString(R.string.google_maps_key));
         placesClient = Places.createClient(this);
         final AutocompleteSessionToken token = AutocompleteSessionToken.newInstance();
-
         materialSearchBar.setOnSearchActionListener(new MaterialSearchBar.OnSearchActionListener() {
             @Override
             public void onSearchStateChanged(boolean enabled) {
-
             }
 
             @Override
@@ -119,7 +107,6 @@ public class InterfaceMap extends AppCompatActivity implements OnMapReadyCallbac
         materialSearchBar.addTextChangeListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
@@ -249,12 +236,9 @@ public class InterfaceMap extends AppCompatActivity implements OnMapReadyCallbac
         locationRequest.setInterval(10000);
         locationRequest.setFastestInterval(5000);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-
         LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder().addLocationRequest(locationRequest);
-
         SettingsClient settingsClient = LocationServices.getSettingsClient(InterfaceMap.this);
         Task<LocationSettingsResponse> task = settingsClient.checkLocationSettings(builder.build());
-
         task.addOnSuccessListener(InterfaceMap.this, new OnSuccessListener<LocationSettingsResponse>() {
             @Override
             public void onSuccess(LocationSettingsResponse locationSettingsResponse) {

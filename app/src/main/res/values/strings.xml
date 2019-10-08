@@ -10,12 +10,61 @@
     <string name="todo2">TODO2</string>
     <string name="todo3">TODO3</string>
     <string name="live_matches">Live Matches</string>
-    <string name="schedules">Schedules</string>
+    <string name="schedules">Schedules and Status</string>
     <string name="todo4">TODO4</string>
     <string name="todo5">TODO5</string>
     <string name="default_notification_channel_ID">INFINITO NotiServices</string>
     <string name="title_activity_all_user">AllUser</string>
     <string name="google_maps_key">AIzaSyBibqViUKZArZvpRrLEgi_i4eCrG6YD73M</string>
     <string name="hello_world">Hello world!</string>
+    <string name="tab_text_1">Infinito Site</string>
+    <string name="tab_text_2">Catch on Insta</string>
+    <string name="tab_text_3">At Facebook</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="Rahul_Pandey">Rahul Pandey\n
+        rahulpandey1605@gmail.com\n
+        +91-7301767109</string>
+    <string name="Manav_Gupta">Manavjeet Gupta\n
+    manaviitp123@gmail.com\n
+    +91-7070107483</string>
+    <string name="Mohit_Kishore">Mohit Kishore\n    .
+    kishoremohit07@gmail.com\n
+    +91-9570566557</string>
+    <string name="Amit_Priyankar">Amit Priyankar\n
+    amitpriyankar22@gmail.com\n
+    +91-6200198286</string>
+    <string name="Amar_Raj">Amar Raj\n
+    amar1506raj@gmail.com
+    +91-7762006306</string>
+    <string name="Ajeet_Kumar">Ajeet Kumar\n
+    ajeetk258@gmail.com\n
+    +91-7977105476</string>
+    <string name="Vikram_Patel">Vikram Patel\n
+   9839vikram@gmail.com\n
+    +91-7568690546</string>
+    <string name="Kartik_Singh">Kartik Singh\n
+    kartik.me17@iitp.ac.in\n
+    +91-8077516207</string>
+    <string name="Rupesh_Neekhra">Rupesh Neekhra\n
+    rupeshneekhra@gmail.com\n
+    +91-8349243453</string>
+    <string name="Deep_Roshan">Deep Roshan\n
+    deep.me17@iitp.ac.in\n
+    +91-9334071587</string>
+    <string name="Neeraj_Kumar">Neeraj Kumar Meena\n
+    neerajmeena322215@gmail.com\n
+    +91-7691870932</string>
+    <string name="Neeraj_Paraliya"> Neeraj Paraliya\n
+    neeraj.ce17@iitp.ac.in\n
+    +91-8239610928</string>
+    <string name="Nayan_Thulkar">Nayan Thulkar\n
+    nayanthulkar15@gmail.com\n
+    +91-8600545858</string>
+
+
+
 
 </resources>
+

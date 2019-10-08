@@ -40,6 +40,8 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     SharedPreferences sp;
     String User,favGame,phone;
+    byte[] pngData;
+    String QRId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +101,16 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+   /* private   byte[] getQRCodeImage(String text, int width, int height) throws WriterException, IOException {
+        QRCodeWriter qrCodeWriter = new QRCodeWriter();
+        BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height);
+
+        ByteArrayOutputStream pngOutputStream = new ByteArrayOutputStream();
+        MatrixToImageWriter.writeToStream(bitMatrix, "PNG", pngOutputStream);
+        pngData = pngOutputStream.toByteArray();
+        return pngData;
+    }*/
+
     private void registerUser(String email, String password) {
         progressDialog.show();
 
@@ -113,13 +125,24 @@ public class RegisterActivity extends AppCompatActivity {
                             String email =user.getEmail();
                             String uid = user.getUid();
                             String phonef="+91-".concat(phone);
+                        /*    QRId="INF19".concat(uid.substring(0,10));
+                            try {
+                                getQRCodeImage("This is my first QR Code", 350, 350);
+                            } catch (WriterException e) {
+                                System.out.println("Could not generate QR Code, WriterException :: " + e.getMessage());
+                            } catch (IOException e) {
+                                System.out.println("Could not generate QR Code, IOException :: " + e.getMessage());
+                            }
+                            String pngDataString=pngData.toString();*/
+
                             HashMap<Object, String> hashMap = new HashMap<>();
                             hashMap.put("email",email);
                             hashMap.put("uid",uid);
                             hashMap.put("name",User);
                             hashMap.put("phone",phonef);
                             hashMap.put("fav",favGame);
-                            hashMap.put("image","");
+                            hashMap.put("image","No Image");
+                         //   hashMap.put("QRCode",pngDataString);
                             FirebaseDatabase database =FirebaseDatabase.getInstance();
                             DatabaseReference reference = database.getReference("users");
                             reference.child(uid).setValue(hashMap);

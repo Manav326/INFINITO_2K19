@@ -6,8 +6,6 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.mind.INFINITO.playerLive.AthletcsLive;
 import com.mind.INFINITO.playerLive.BasketballLive;
 import com.mind.INFINITO.playerLive.CricketLive;
@@ -15,8 +13,6 @@ import com.mind.INFINITO.playerLive.FootballLive;
 import com.mind.INFINITO.playerLive.LawntennisLive;
 import com.mind.INFINITO.playerLive.TabletennisLive;
 import com.mind.INFINITO.playerLive.VolleyballLive;
-
-import java.util.HashMap;
 
 public class livematches extends AppCompatActivity implements View.OnClickListener {
 
@@ -33,9 +29,6 @@ public class livematches extends AppCompatActivity implements View.OnClickListen
         tabletennis = findViewById(R.id.tabletennis);
         lawntennis = findViewById(R.id.lawntennis);
         football = findViewById(R.id.football);
-
-
-
         athletics.setOnClickListener(this) ;
         cricket.setOnClickListener(this) ;
         volleyball.setOnClickListener(this) ;
@@ -43,33 +36,10 @@ public class livematches extends AppCompatActivity implements View.OnClickListen
         tabletennis.setOnClickListener(this) ;
         lawntennis.setOnClickListener(this) ;
         football.setOnClickListener(this) ;
-        /*{
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),AthletcsLive.class);
-                startActivity(intent);
-            }
-        });*/
     }
 
     @Override
     public void onClick(View v) {
-        HashMap<Object, String> hashMap = new HashMap<>();
-
-        hashMap.put("Athletics","");
-        hashMap.put("Cricket","");
-        hashMap.put("Volleyball","");
-        hashMap.put("Basketball","");
-        hashMap.put("Tabletennis","");
-        hashMap.put("Lawntennis","");
-        hashMap.put("Football","");
-
-        FirebaseDatabase database =FirebaseDatabase.getInstance();
-
-        DatabaseReference reference = database.getReference("Links_Matches");
-        reference.setValue(hashMap);
-
-
         switch (v.getId()){
             case R.id.athletics:
                 Intent intent = new Intent(getApplicationContext(),AthletcsLive.class);
@@ -79,7 +49,6 @@ public class livematches extends AppCompatActivity implements View.OnClickListen
             case R.id.cricket:
                 Intent intent1 = new Intent(getApplicationContext(),CricketLive.class);
                 startActivity(intent1);
-
                 break;
 
             case R.id.volleyball:
@@ -105,13 +74,7 @@ public class livematches extends AppCompatActivity implements View.OnClickListen
                 Intent intent6 = new Intent(getApplicationContext(), FootballLive.class);
                 startActivity(intent6);
                 break;
-
-
         }
-
-
-
-
     }
 }
 
